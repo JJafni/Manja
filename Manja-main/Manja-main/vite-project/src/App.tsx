@@ -11,7 +11,7 @@ const App = () => {
   return (
     <>
       <div>
-        {/* <MainNavbar /> */}
+        <MainNavbar />
         <HeroParallaxDemo />
       </div>
     </>

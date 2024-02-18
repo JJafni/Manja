@@ -16,6 +16,11 @@ import {
     ModalHeader,
     ModalBody,
     useDisclosure,
+    Divider,
+    CardHeader,
+    Card,
+    CardFooter,
+    Button,
 } from '@nextui-org/react'
 
 const HeroParallax = ({
@@ -115,7 +120,7 @@ export const Header = () => {
 
     return (
         <>
-            <div className="max-w-7xl relative mx-auto py-20 md:py-4 px-4 w-full"  >
+            <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full"  >
                 <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
                     Discover <br /> Manja Manga
                 </h1>
@@ -124,13 +129,18 @@ export const Header = () => {
                     Manja Manga brings you the latest manga titles and genres, curated by passionate enthusiasts
                     dedicated to delivering an unparalleled reading experience.
                 </p>
-                <video className="h-full w-full rounded-lg" autoPlay muted style={{
-                    width: "50%",
+                {/* <div className="video-container" style={{
+                    width: "100%",
                     height: "100%",
-                    zIndex: -300,
+                    boxShadow: "0px 0px 10px 8px rgba(0, 0, 0, 1) inset"
                 }}>
-                    <source src="https://docs.material-tailwind.com/demo.mp4" type="video/mp4" />
-                </video>
+                    <video className="h-full w-full " autoPlay muted style={{
+                        boxShadow: " 0px 0px 10px 8px rgba(0,0,0,1) inset    "
+
+                    }}>
+                        <source src="https://docs.material-tailwind.com/demo.mp4" type="video/mp4" />
+                    </video>
+                </div> */}
 
                 {/* <div
                     style={{
@@ -194,18 +204,39 @@ export const ProductCard = ({
                 onMouseLeave={(e) => { (e.target as HTMLImageElement).style.filter = "grayscale(100%)"; }} // Revert filter when not hovering
             />
 
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange}> <ModalContent>
-                <>
-                    <ModalHeader className="flex flex-col gap-1">{product.title}</ModalHeader>
-                    <ModalBody>
-                        <Image
-                            onClick={onOpen}
-                            src={product.thumbnail}
-                            alt={product.title}
-                        />
-                    </ModalBody>
-                </>
-            </ModalContent>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                <ModalContent>
+                    <>
+
+
+                        <Card isFooterBlurred className="col-span-12 sm:col-span-4">
+
+                            <Image
+                                removeWrapper
+                                alt={product.title}
+                                className="z-0 w-full h-full object-cover"
+                                src={product.thumbnail}
+                            />  <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+                            <div className="flex flex-grow gap-2 items-center">
+                              <Image
+                                alt="Get Icon"
+                                className="rounded-full w-10 h-11 bg-black"
+                                src="/images/breathing-app-icon.jpeg"
+                              />
+                              <div className="flex flex-col">
+                                <p className="text-tiny text-white/60">{product.title}</p>
+                                <p className="text-tiny text-white/60">Get a good night's sleep.</p>
+                              </div>
+                            </div>
+                            <Button radius="full" size="sm">Get App</Button>
+                          </CardFooter>
+                        </Card>
+
+
+
+
+                    </>
+                </ModalContent>
             </Modal>
 
 
