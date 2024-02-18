@@ -66,7 +66,9 @@ const HeroParallax = ({
         <div
             ref={ref}
             className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+
         >
+
             <Header />
             <motion.div
                 style={{
@@ -110,18 +112,40 @@ const HeroParallax = ({
 };
 
 export const Header = () => {
-    return (
-        <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-           <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
-    Discover <br /> Manja Manga
-</h1>
-<p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-    Immerse yourself in captivating stories brought to life with stunning artwork.
-    Manja Manga brings you the latest manga titles and genres, curated by passionate enthusiasts
-    dedicated to delivering an unparalleled reading experience.
-</p>
 
-        </div>
+    return (
+        <>
+            <div className="max-w-7xl relative mx-auto py-20 md:py-4 px-4 w-full"  >
+                <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
+                    Discover <br /> Manja Manga
+                </h1>
+                <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200 ">
+                    Immerse yourself in captivating stories brought to life with stunning artwork.
+                    Manja Manga brings you the latest manga titles and genres, curated by passionate enthusiasts
+                    dedicated to delivering an unparalleled reading experience.
+                </p>
+                <video className="h-full w-full rounded-lg" autoPlay muted style={{
+                    width: "50%",
+                    height: "100%",
+                    zIndex: -300,
+                }}>
+                    <source src="https://docs.material-tailwind.com/demo.mp4" type="video/mp4" />
+                </video>
+
+                {/* <div
+                    style={{
+                        backgroundImage: "url('https://cloudfront-eu-central-1.images.arcpublishing.com/diarioas/EORS27TG5VDRJGXXIJYQBHTQKA.jpg')", backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        position: "fixed",
+                        marginTop: "20vh",
+                        width: "100vh",
+                        height: "40vh",
+                        zIndex: -1,
+                    }}
+                ></div> */}
+
+            </div >
+        </>
     );
 };
 
@@ -139,9 +163,12 @@ export const ProductCard = ({
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
+
         <motion.div
             style={{
                 x: translate,
+
+
             }}
             whileHover={{
                 y: -20,
@@ -149,6 +176,7 @@ export const ProductCard = ({
             key={product.title}
             className="group/product h-96 w-[30rem] relative flex-shrink-0"
         >
+
             <Image
 
                 onClick={onOpen}
@@ -160,27 +188,25 @@ export const ProductCard = ({
                     cursor: "pointer",
                     filter: "grayscale(100%)", // Set image to black and white
                     transition: "filter 0.3s ease", // Add transition for smooth hover effect
+
                 }}
                 onMouseEnter={(e) => { (e.target as HTMLImageElement).style.filter = "grayscale(0%)"; }} // Change filter on hover
                 onMouseLeave={(e) => { (e.target as HTMLImageElement).style.filter = "grayscale(100%)"; }} // Revert filter when not hovering
             />
 
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}> <ModalContent>
-
                 <>
                     <ModalHeader className="flex flex-col gap-1">{product.title}</ModalHeader>
                     <ModalBody>
                         <Image
                             onClick={onOpen}
                             src={product.thumbnail}
-
                             alt={product.title}
                         />
                     </ModalBody>
-
                 </>
-
-            </ModalContent></Modal>
+            </ModalContent>
+            </Modal>
 
 
         </motion.div >
